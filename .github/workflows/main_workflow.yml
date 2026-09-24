@@ -22,3 +22,15 @@ jobs:
           LINTER_RULES_PATH: /
           JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
           VALIDATE_JAVASCRIPT_ES: true
+
+  test-execution:
+    runs-on: ubuntu-latest
+    needs: linter-execution
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run jest tests
+        run: |
+          npm install jest
+          npm test
