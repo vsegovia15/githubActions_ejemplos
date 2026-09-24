@@ -8,4 +8,4 @@ const servidor = http.createServer((peticion, respuesta) => {
 
 servidor.listen(3000, () => {
   console.log('Servidor escuchando en el puerto 3000');
-});
+});var numero = 5
