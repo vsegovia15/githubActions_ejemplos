@@ -3,7 +3,7 @@ name: main_workflow
 on:
   push:
     branches:
-      - nodejs_nodeversions_job
+      - nodejs_environment_job
 
 jobs:
   linter-execution:
@@ -42,3 +42,14 @@ jobs:
         run: |
           npm install jest
           npm test
+
+  environment_test_execution:
+    runs-on: ubuntu-latest
+    needs: [linter-execution, test-execution]
+    env:
+      DESTINATION_PERSON: 2DAW
+    steps:
+      - name: Hello action
+        uses: adeloyejedi/github-actions-hello@v1.0
+        with:
+          who-to-greet: ${{ env.DESTINATION_PERSON }}
