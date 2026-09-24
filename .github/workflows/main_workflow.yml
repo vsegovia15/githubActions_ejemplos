@@ -3,16 +3,24 @@ name: main_workflow
 on:
   push:
     branches:
-      - nodejs_jest_job
+      - nodejs_nodeversions_job
 
 jobs:
   linter-execution:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16, 18, 20]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
+      - name: Setting node version
+        uses: actions/setup-nodeversion@v3
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Linter execution
         uses: github/super-linter@v4
