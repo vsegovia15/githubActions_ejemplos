@@ -50,6 +50,6 @@ jobs:
       DESTINATION_PERSON: 2DAW
     steps:
       - name: Hello action
-        uses: adeloyejedi/github-actions-hello@v1.0
+        uses: adeloyedeji/github-actions-hello@v1.0
         with:
           who-to-greet: ${{ env.DESTINATION_PERSON }}
