@@ -39,9 +39,26 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run jest tests
+        id: tests
+        continue-on-error: true
         run: |
           npm install jest
           npm test
+
+      - name: Tests failure message
+        if: steps.tests.outcome == 'failure'
+        run: |
+          echo "❌ Los tests han fallado"
+          echo "outcome: ${{ steps.tests.outcome }}
+          echo "conclusion: ${{ steps.tests.conclusion }}
+
+      - name: Tests success message
+        if: steps.tests.outcome == 'success'
+        run: echo "✅ Los tests se han ejecutado correctamente"
+
+      - name: Mark job as failed
+        if: steps.tests.outcome == 'failure'
+        run: exit 1
 
   environment_test_execution:
     runs-on: ubuntu-latest
