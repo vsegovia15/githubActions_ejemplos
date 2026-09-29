@@ -1,0 +1,22 @@
+name: 'Meme en el README'
+description: 'Añade al README un meme con una frase positiva o negativa según el resultado de los tests'
+author: 'vsegovia'
+
+inputs:
+  frase_positiva:
+    description: 'Frase que se muestra si los tests han funcionado'
+    required: true
+  frase_negativa:
+    description: 'Frase que se muestra si los tests han fallado'
+    required: true
+  resultado_test:
+    description: 'Resultado del job de tests (success, failure, cancelled...)'
+    required: true
+
+outputs:
+  respuesta:
+    description: 'Respuesta de la acción'
+
+runs:
+  using: 'node24'
+  main: 'index.js'
