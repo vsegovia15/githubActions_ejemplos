@@ -19,7 +19,7 @@ async function run() {
 
     const bot = new TelegramBot(token, { polling: false });
 
-    const mensaje = 'Workflow ejecutado correctamente después del último commit. Saludos ${nombre}.';
+    const mensaje = `Workflow ejecutado correctamente después del último commit. Saludos ${nombre}.`;
 
     await bot.sendMessage(chatId, mensaje);
 
@@ -27,7 +27,7 @@ async function run() {
     console.log('Mensaje enviado');
     core.setOutput('respuesta', 'Mensaje enviado');
   } catch (error) {
-    core.setFailed('Error al enviar el mensaje: ${error.message}');
+    core.setFailed(`Error al enviar el mensaje: ${error.message}`);
   }
 }
 
