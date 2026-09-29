@@ -11,7 +11,7 @@ async function run() {
     const chatId = process.env.TELEGRAM_CHAT_ID;
 
     // Nombre que se pasa desde el workflow
-    const nombre = core.getInput('nombre');
+    const nombre = process.env.NOMBRE;
 
     if (!token || !chatId) {
       throw new Error('Faltan las variables de entorno TELEGRAM_TOKEN o TELEGRAM_CHAT_ID');
