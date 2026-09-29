@@ -1,0 +1,17 @@
+name: 'Send Telegram Message'
+description: 'Envía un mensaje por Telegram indicando que el workflow se ha ejecutado correctamente'
+author: vsegovia
+
+inputs:
+  nombre:
+    descripción: 'Nombre de la persona que aparecerá en el mensaje'
+    required: true
+    default: 'DAW'
+
+outputs:
+  respuesta:
+    description: 'Respuesta de la acción tras enviar el mensaje'
+
+runs:
+  using: 'node24'
+  main: 'index.js'
